@@ -4,7 +4,7 @@ import React from 'react'
 export interface ITitle {
 	children: string;
 }
-export const Title = (props: ITitle) => <Text style={styles.title}>Title</Text>
+export const Title = ({ children }: ITitle) => <Text style={styles.title}>{ children }</Text>
 
 export const styles = StyleSheet.create({
 	title: {

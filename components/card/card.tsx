@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React from 'react';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+
 
 export const Card = () => {
   return (
 	<View style={styles.card}>
-	  <Text style={styles.title}>title</Text>
-	  <Text style={styles.text}>Text</Text>
+	  <MaterialIcons name='2mp' size={50} color={"#fff"} />
 	</View>
   )
 }
