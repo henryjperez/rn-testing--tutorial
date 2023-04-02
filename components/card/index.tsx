@@ -1,2 +1,2 @@
-export { Card, styles as cardStyles } from "./card";
-export { GroupCards, styles as groupCardsStyles } from "./group_cards";
+export { Card, styles as cardStyles, ICard } from "./card";
+export { GroupCards, styles as groupCardsStyles, IGroupCards } from "./group_cards";

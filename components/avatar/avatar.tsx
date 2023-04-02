@@ -1,6 +1,9 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 
-export const Avatar = () => {
+export interface IAvatar {
+
+}
+export const Avatar = (props: IAvatar) => {
 	return (
 		<View style={styles.border}>
 			<Image source={require("../../assets/avatar.png")} style={styles.img} alt={`avatar image`} />
