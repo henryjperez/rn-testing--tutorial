@@ -18,7 +18,7 @@ export default function ProfileScreen() {
 
 	return (
 		<View style={styles.main_container}>
-			<StatusBar style="auto" />
+			<StatusBar style="light" />
 
 			<View style={styles.button_container}>
 				<Button onPress={handleButtonPress}>
