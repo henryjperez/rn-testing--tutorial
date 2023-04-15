@@ -43,8 +43,8 @@ export const useIcons = () => {
 		}
 	}
 	function resetIcons() {
-		setIconsList(iconsList);
-		setButtonList(buttonIcons);
+		setIconsList([...initialIcons]);
+		setButtonList([...buttonIcons]);
 	}
 	
 	return {
