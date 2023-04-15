@@ -3,12 +3,14 @@ import React from 'react';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 export interface ICard {
+	icon: string;
 	onPress: () => void;
 }
 export const Card = (props: ICard) => {
 	return (
 		<TouchableOpacity style={styles.card} onPress={props.onPress}>
-			<MaterialIcons name='2mp' size={50} color={"#fff"} />
+			{/* @ts-ignore */}
+			<MaterialIcons name={props.icon} size={50} color={"#fff"} />
 		</TouchableOpacity>
 	)
 }
