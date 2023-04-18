@@ -9,13 +9,25 @@ import { Loading } from "../components/loading";
 import { useIcons } from "../hooks/useIcons";
 
 export default function ProfileScreen() {
-	const { iconsList, addIcon, buttonList, resetIcons, } = useIcons();
+	const {
+		iconsList,
+		addIcon,
+		buttonList,
+		resetIcons,
+		activateIcon,
+		deactivateIcon
+	} = useIcons();
+	const loading = !(iconsList.length > 0);
 
-	function handleCardPress() {
-		Alert.alert("You pressed a <Card />");
+	function handleCardPress(state: boolean, index: number) {
+		if (state) {
+			deactivateIcon(index);
+		} else {
+			activateIcon(index);
+		}
 	}
-	function handleButtonPress() {
-		Alert.alert("You pressed the <Button />");
+	function handleButtonPress(icon: string) {
+		addIcon(icon);
 	}
 
 	return (
@@ -25,7 +37,7 @@ export default function ProfileScreen() {
 			{
 				(buttonList.length > 0) && (
 					<View style={styles.button_container}>
-						<Button onPress={addIcon}>
+						<Button onPress={() => handleButtonPress(buttonList[0])} disabled={loading}>
 							{/* @ts-ignore */}
 							<MaterialIcons name={buttonList[0]} size={40} color={"#fff"} />
 						</Button>
@@ -36,7 +48,7 @@ export default function ProfileScreen() {
 			{
 				(buttonList.length <= 0) && (
 					<View style={styles.reset_container}>
-						<Button onPress={resetIcons}>
+						<Button onPress={resetIcons} disabled={loading}>
 							<MaterialIcons name={"replay"} size={40} color={"#fff"} />
 						</Button>
 					</View>
@@ -50,13 +62,14 @@ export default function ProfileScreen() {
 				</Title>
 				<ScrollView style={styles.scroll}>
 					<GroupCards><>
-						{!(iconsList.length > 0) && <Loading />}
+						{loading && <Loading />}
 						{
-							iconsList.map((icon, index) => (
+							iconsList.map((item, index) => (
 								<Card
-									onPress={handleCardPress}
-									key={`${icon}-${index}`}
-									icon={icon}
+									onPress={() => handleCardPress(item.activate, index)}
+									key={`${item.icon}-${index}`}
+									icon={item.icon}
+									activate={item.activate}
 								/>
 							))
 						}

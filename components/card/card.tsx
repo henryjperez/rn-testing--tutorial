@@ -5,9 +5,10 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 export interface ICard {
 	icon: string;
 	onPress: () => void;
+	activate?: boolean;
 }
 export const Card = (props: ICard) => {
-	const [activated, setActivated] = useState(false);
+	const [activated, setActivated] = useState(!!props.activate);
 	const rotateView = useRef(new Animated.Value(0)).current;
 
 	const rotation = rotateView.interpolate({
@@ -24,7 +25,7 @@ export const Card = (props: ICard) => {
 	}
 
 	function handleRotation() {
-		const timing = 1000;
+		const timing = 500;
 		const openAnimation = Animated.timing(rotateView, {
 			toValue: 0.5,
 			duration: timing,
@@ -37,6 +38,7 @@ export const Card = (props: ICard) => {
 		});
 
 		openAnimation.start(() => {
+			props?.onPress();
 			handleActivation();
 			endAnimation.start(() => {
 				openAnimation.reset();

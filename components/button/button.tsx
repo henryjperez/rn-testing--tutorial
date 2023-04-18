@@ -4,10 +4,11 @@ import React from 'react'
 export interface IButton {
 	onPress: () => void;
 	children: JSX.Element;
+	disabled?: boolean;
 }
-export const Button = ({ onPress, children }: IButton) => {
+export const Button = ({ onPress, children, disabled = false }: IButton) => {
 	return (
-		<TouchableOpacity onPress={onPress} style={styles.button}>
+		<TouchableOpacity onPress={onPress} style={styles.button} disabled={disabled}>
 			{children}
 		</TouchableOpacity>
 	)
