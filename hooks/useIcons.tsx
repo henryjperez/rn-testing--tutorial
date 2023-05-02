@@ -114,7 +114,7 @@ export const useIcons = () => {
 	const [iconsList, dispatch] = useReducer(iconsReducer, []);
 
 	useEffect(() => {
-		dispatch(resetAction());
+		setTimeout(() => dispatch(resetAction()), 1000);
 	}, []);
 
 	function addIcon(icon: string) {
