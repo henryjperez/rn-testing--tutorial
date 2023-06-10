@@ -49,10 +49,10 @@ export const Card = (props: ICard) => {
 
 	return (
 		<Animated.View style={[styles.container, { transform: [{ rotateY: rotation }] }]}>
-			<TouchableOpacity style={styles.card} onPress={handleOnPress}>
+			<TouchableOpacity style={styles.card} onPress={handleOnPress} testID='card-press'>
 				{
 					/* @ts-ignore */
-					activated && <MaterialIcons name={props.icon} size={50} color={"#fff"} />
+					activated && <MaterialIcons name={props.icon} size={50} color={"#fff"} testID={props.icon} />
 				}
 			</TouchableOpacity>
 		</Animated.View>

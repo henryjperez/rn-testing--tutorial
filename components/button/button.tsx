@@ -2,13 +2,13 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 export interface IButton {
-	onPress: () => void;
-	children: JSX.Element;
+	onPress?: () => void;
+	children: JSX.Element | string;
 	disabled?: boolean;
 }
 export const Button = ({ onPress, children, disabled = false }: IButton) => {
 	return (
-		<TouchableOpacity onPress={onPress} style={styles.button} disabled={disabled}>
+		<TouchableOpacity onPress={onPress} style={styles.button} disabled={disabled} testID='base-button'>
 			{children}
 		</TouchableOpacity>
 	)
